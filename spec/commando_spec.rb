@@ -8,7 +8,7 @@ RSpec.describe Commando do
     result = Commando::RunCommand.new.(cmd)
 
     expect(result).to be_success
-    expect(result.value).to include "TEST"
+    expect(result.value_or).to include "TEST"
   end
 
   it 'applies a filtering fn to the result' do
@@ -16,7 +16,7 @@ RSpec.describe Commando do
 
     result = Commando::RunCommand.new.(cmd, Fn.replace.(/TE/, "**"))
 
-    expect(result.value).to include "**ST"
+    expect(result.value_or).to include "**ST"
 
   end
 
